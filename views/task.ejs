@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: #0074D9;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+
+    h2 {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    a.create-task-button {
+      display: block;
+      text-align: center;
+      background-color: #0074D9;
+      color: #fff;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+    a.create-task-button:hover {
+      background-color: #0056b3;
+    }
+
+    a.edit-task-button {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    a.delete-task-button {
+      display: inline-block;
+      background-color: #f22b2b;
+      color: #fff;
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    a.edit-task-button:hover {
+      background-color: #555;
+    }
+
+    a.delete-task-button:hover {
+      background-color: #ca2121;
+    }
+
+    .filter {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .filter-button {
+      background-color: #333;
+      color: #fff;
+      padding: 6px 10px; /* Same padding as edit and delete buttons */
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 16px; /* Same font size as edit and delete buttons */
+    }
+
+    .filter-button:hover {
+      background-color: #555;
+    }
+
+    .filter-button.all-tasks {
+      background-color: #0074D9;
+    }
+
+    .filter-button.pending-tasks {
+      background-color: #333;
+    }
+
+    .filter-button.completed-tasks {
+      background-color: #4CAF50;
+    }
+
+    .filter-button:hover.all-tasks {
+      background-color: #0056b3;
+    }
+
+    .filter-button:hover.pending-tasks {
+      background-color: #555;
+    }
+
+    .filter-button:hover.completed-tasks {
+      background-color: #45A049;
+    }
+
+    .filter-button a {
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/views">Home</a>
+    <a href="/views/logout">Logout</a>
+  </div>
+
+  <h2>Tasks</h2>
+  <div class="container">
+    <a class="create-task-button" href="/views/task/create">Create Task</a>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <!-- Your dynamic task content here -->
+      <% tasks.forEach(function(task){ %>
+        <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.state %></td>
+            <td><a class="edit-task-button" href="/edit/<%= task._id %>">Edit</a></td>
+            <td><a class="delete-task-button" href="/delete/<%= task._id %>">Delete</a></td>
+          </tr>
+      <% }); %>
+    </table>
+
+    <div class="filter">
+      <a href="/views/task/"><button class="filter-button all-tasks" id="allTasksFilter">All Tasks</button></a>
+      <a href="/views/task/pending"><button class="filter-button pending-tasks" id="pendingTasksFilter">Pending</button></a>
+      <a href="/views/task/completed"><button class="filter-button completed-tasks" id="completedTasksFilter">completed</button></a>
+    </div>
+  </div>
+</body>
+</html>

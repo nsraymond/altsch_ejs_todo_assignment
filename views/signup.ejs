@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #fff;
+      padding: 20px 0;
+    }
+
+    .navbar a {
+      background-color: #0074D9;
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+      margin: 0 10px;
+      border-radius: 4px;
+    }
+
+    h1 {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #0074D9;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #0074D9;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/views" style="margin-left: 10px;">Home</a>
+  </div>
+  <h1>Sign up</h1>
+  <div class="container">
+    <form action="/views/signup" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="" required>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" value="" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Submit">
+    </form>
+    <p>Already have an account? <a href="/views/login">Log In</a></p>
+  </div>
+</body>
+</html>

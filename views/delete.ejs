@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        select {
+            height: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .cancel-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f22b2b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Delete Task</h1>
+    </div>
+
+    <div class="container">
+        <form class="form" action="/delete/<%= task._id %>" method="post">
+            <label for="title">Task Title:</label>
+            <input type="text" name="title" id="title" value="<%= task.title %>" readonly>
+
+            <label for="description">Description or Details:</label>
+            <textarea name="description" id="description" readonly><%= task.description %></textarea>
+
+            <label for="state">Task State:</label>
+            <input type="text" name="state" id="state" value="<%= task.state %>" readonly>
+
+            <div class="button-container">
+                <a href="/tasks" class="cancel-button">Cancel</a>
+                <button type="submit" class="delete-button">Confirm</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
